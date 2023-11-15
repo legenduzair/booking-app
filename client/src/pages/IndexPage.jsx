@@ -4,7 +4,7 @@ import Header from '../components/Header'
 const IndexPage = () => {
   return (
     <div>
-      <Header />
+      Index Page
     </div>
   )
 }
