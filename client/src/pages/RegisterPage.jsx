@@ -10,7 +10,11 @@ const RegisterPage = () => {
 
   const registerUser = (ev) => {
     ev.preventDefault();
-    axios.get('http://localhost:4000/test')
+    axios.post('/register', {
+      name,
+      email,
+      password,
+    });
   }
 
   return (
