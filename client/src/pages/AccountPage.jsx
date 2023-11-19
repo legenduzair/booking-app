@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 
 const AccountPage = () => {
+
   const {ready, user} = useContext(UserContext);
 
   if(!ready) {
@@ -13,8 +14,25 @@ const AccountPage = () => {
     return <Navigate to={'/login'} />
   }
 
+  const {subpage} = useParams();
+
+  function linkClasses(type=null) {
+    let classes = 'py-2 px-6';
+    if (type === subpage || (subpage === undefined && type === 'profile')) {
+        classes += ' bg-primary text-white rounded-full';
+    }
+
+    return classes;
+  }
+
   return (
-    <div>Account Page for {user.name}</div>
+    <div>
+        <nav className='w-full flex justify-center mt-8 gap-2'>
+            <Link className={linkClasses('profile')} to={'/account'}>My Profile</Link>
+            <Link className={linkClasses('bookings')} to={'/account/bookings'}>My Bookings</Link>
+            <Link className={linkClasses('places')} to={'/account/places'}>My Accommodations</Link>
+        </nav>
+    </div>
   )
 }
 
