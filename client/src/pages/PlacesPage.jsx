@@ -87,6 +87,26 @@ const PlacesPage = () => {
                       <span>Computer</span>
                     </label>
                   </div>
+                  <h2 className='text-2xl mt-4'>Extra Information</h2>
+                  <p className='text-gray-500 text-sm'>Include any extra information about your place.</p>
+                  <textarea />
+                  <h2 className='text-2xl mt-4'>Check In & Out Times, Max Guests</h2>
+                  <p className='text-gray-500 text-sm'>Add check in and out times and the maximum number of guests allowed in your place.</p>
+                  <div className='grid gap-2 sm:grid-cols-3'>
+                    <div>
+                      <h3 className='mt-2 -mb-1'>Check-In Time:</h3>
+                      <input type="text" placeholder='15:00' />
+                    </div>
+                    <div>
+                      <h3 className='mt-2 -mb-1'>Check-Out Time:</h3>
+                      <input type="text" placeholder='22:00' />
+                    </div>
+                    <div>
+                      <h3 className='mt-2 -mb-1'>Max Number of Guests:</h3>
+                      <input type="text" placeholder='4 guests maximum' />
+                    </div>
+                  </div>
+                  <button className='primary my-4'>Save</button>
               </form>
           </div>
       )}
