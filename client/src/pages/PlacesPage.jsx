@@ -75,13 +75,13 @@ const PlacesPage = () => {
                                        placeholder='Add using a link...jpg' />
                     <button onClick={addPhotoByLink} className='bg-gray-200 px-4 rounded-2xl'>Add&nbsp;Snapshot</button>
                   </div>
-                  <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
+                  <div className='mt-2 gap-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
                     {addedPhotos.length > 0 && addedPhotos.map(link => (
                       <div>
-                        {link}
+                        <img className='rounded-2xl' src={'http://localhost:4000/uploads/' + link} alt="" />
                       </div>
                     ))}
-                      <button className='flex justify-center gap-2 border bg-transparent rounded-2xl text-xl text-gray-600 p-8'>
+                      <button className='flex items-center justify-center gap-2 border bg-transparent rounded-2xl text-xl text-gray-600 p-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                         </svg>
