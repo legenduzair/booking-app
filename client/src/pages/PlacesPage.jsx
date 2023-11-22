@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react';
 import Perks from '../components/Perks';
+import axios from 'axios';
 
 const PlacesPage = () => {
   const {action} = useParams();
@@ -39,6 +40,15 @@ const PlacesPage = () => {
     )
   }
 
+  async function addPhotoByLink(ev) {
+    ev.preventDefault();
+    const {data:filename} = await axios.post('/upload-by-link/', {link:photoLink});
+    setAddedPhotos(prev => {
+      return [...prev, filename];
+    });
+    setPhotoLink('');
+  }
+
   return (
     <div>
       {action !== 'new' && (
@@ -63,9 +73,14 @@ const PlacesPage = () => {
                     <input type="text" value={photoLink} 
                                        onChange={ev => setPhotoLink(ev.target.value)} 
                                        placeholder='Add using a link...jpg' />
-                    <button className='bg-gray-200 px-4 rounded-2xl'>Add&nbsp;Snapshot</button>
+                    <button onClick={addPhotoByLink} className='bg-gray-200 px-4 rounded-2xl'>Add&nbsp;Snapshot</button>
                   </div>
                   <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
+                    {addedPhotos.length > 0 && addedPhotos.map(link => (
+                      <div>
+                        {link}
+                      </div>
+                    ))}
                       <button className='flex justify-center gap-2 border bg-transparent rounded-2xl text-xl text-gray-600 p-8'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
