@@ -2,9 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
-const PhotosUploader = () => {
+const PhotosUploader = ({addedPhotos, onChange}) => {
 
-  const [addedPhotos, setAddedPhotos] = useState([]);
   const [photoLink, setPhotoLink] = useState('');
 
   async function addPhotoByLink(ev) {
@@ -12,7 +11,7 @@ const PhotosUploader = () => {
     const { data: filename } = await axios.post("/upload-by-link/", {
       link: photoLink,
     });
-    setAddedPhotos((prev) => {
+    onChange((prev) => {
       return [...prev, filename];
     });
     setPhotoLink("");
@@ -27,7 +26,7 @@ const PhotosUploader = () => {
     const { data: filenames } = await axios.post("/upload", data, {
       headers: { "Content-type": "multipart/form-data" },
     });
-    setAddedPhotos((prev) => {
+    onChange((prev) => {
       return [...prev, ...filenames];
     });
   }

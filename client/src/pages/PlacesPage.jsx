@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -13,11 +13,13 @@ const PlacesPage = () => {
   const [title, setTitle] = useState('');
   const [address, setAddress] = useState('');
   const [description, setDescription] = useState('');
+  const [addedPhotos, setAddedPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
   const [extraInfo, setExtraInfo] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [maxGuests, setMaxGuests] = useState(1);
+  const [redirectToPlacesList, setRedirectToPlacesList] = useState(false);
 
   function inputHeader(text) {
     return (
@@ -40,13 +42,27 @@ const PlacesPage = () => {
     )
   }
 
+  async function addNewPlace(ev) {
+    ev.preventDefault();
+    await axios.post('/places', {
+      title, address, addedPhotos,
+      description, perks, extraInfo,
+      checkIn, checkOut, maxGuests
+    });
+    setRedirectToPlacesList(true);
+  }
+
+  if(redirectToPlacesList && action!== 'new') {
+    <Navigate to={'/account/places'} />
+  }
+
   return (
     <div>
       {action !== 'new' && (
           <div className='text-center'>
               <Link className='inline-flex gap-1 bg-primary text-white py-2 px-6 rounded-full' to={'/account/places/new'}>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Add New Place
               </Link>
@@ -54,13 +70,14 @@ const PlacesPage = () => {
       )}
       {action === 'new' && (
           <div>
-              <form>
+              <form onSubmit={addNewPlace}>
                   {preInput('Title', 'Title for your place. Should be short and catchy!')}
                   <input type="text" value={title} onChange={ev => setTitle(ev.target.value)} placeholder='Title: My lovely house' />
                   {preInput('Address', 'Where your place is located.')}
                   <input type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder='Address' />
                   {preInput('Snapshots', 'Showcase your place to the world!')}
-                  <PhotosUploader />
+                  <PhotosUploader addedPhotos={addedPhotos}
+                                  onChange={setAddedPhotos} />
                   {preInput('Description', 'Description of your place.')}
                   <textarea value={description} 
                             onChange={ev => setDescription(ev.target.value)} />
