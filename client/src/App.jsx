@@ -8,7 +8,7 @@ import UserContextProvider from './UserContext'
 import './App.css'
 import Layout from './Layout'
 import axios from 'axios'
-import ProfilePage from './pages/AccountPage'
+import ProfilePage from './pages/ProfilePage'
 import PlacesPage from './pages/PlacesPage'
 import PlacesFormPage from './pages/PlacesFormPage'
 
