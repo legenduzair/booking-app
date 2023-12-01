@@ -96,8 +96,8 @@ const PlacePage = () => {
           <div>
             {place.photos?.[0] && (
               <div>
-                <img
-                  className="w-full aspect-square object-cover"
+                <img onClick={() => setShowAllPhotos(true)}
+                  className="cursor-pointer w-full aspect-square object-cover"
                   src={"http://localhost:4000/uploads/" + place.photos[0]}
                   alt=""
                 />
@@ -106,16 +106,16 @@ const PlacePage = () => {
           </div>
           <div className="grid">
             {place.photos?.[1] && (
-              <img
-                className="aspect-square object-cover"
+              <img onClick={() => setShowAllPhotos(true)}
+                className="cursor-pointer aspect-square object-cover"
                 src={"http://localhost:4000/uploads/" + place.photos[1]}
                 alt=""
               />
             )}
             <div className="overflow-hidden">
               {place.photos?.[2] && (
-                <img
-                  className="aspect-square object-cover relative top-2"
+                <img onClick={() => setShowAllPhotos(true)}
+                  className="cursor-pointer aspect-square object-cover relative top-2"
                   src={"http://localhost:4000/uploads/" + place.photos[2]}
                   alt=""
                 />
@@ -146,7 +146,7 @@ const PlacePage = () => {
           </button>
         )}
       </div>
-      <div className="mt-8 grid gap-8 grid-cols-1 md:grid-cols-[2fr_1fr]">
+      <div className="mt-8 mb-8 grid gap-8 grid-cols-1 md:grid-cols-[2fr_1fr]">
         <div>
           <div className="my-4">
             <h2 className="font-semibold text-2xl">Description</h2>
@@ -162,6 +162,14 @@ const PlacePage = () => {
             <Booking place={place} />
         </div>
       </div>
+      {place.extraInfo && (
+        <>
+          <div className="bg-white -mx-8 p-8 border-t">
+            <h2 className="font-semibold text-2xl">Extra Info:</h2>
+          </div>
+          <div className="mb-4 mt-2 text-sm text-gray-700 leading-5">{place.extraInfo}</div>
+          </>
+      )}
     </div>
   );
 };
