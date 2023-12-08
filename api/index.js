@@ -190,4 +190,9 @@ app.get('/bookings', async (req, res) => {
     res.json(await Booking.find({user:userData.id}).populate('place'));
 });
 
+app.get('/bookings/:id', async (req, res) => {
+    const {id} = req.params;
+    res.json(await Booking.findById(id).populate('place'));
+});
+
 app.listen(4000)
