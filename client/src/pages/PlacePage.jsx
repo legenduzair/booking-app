@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Booking from "../components/Booking";
 import PlaceGallery from "../components/PlaceGallery";
@@ -22,6 +22,9 @@ const PlacePage = () => {
 
   return (
     <div className="mt-4 bg-gray-100 -mx-8 pl-32 pr-32 py-16">
+      <div className="mb-8">
+        <Link to={'/'} className="text-sm">&larr; Back to Places</Link>
+      </div>
       <h1 className="text-3xl">{place.title}</h1>
       <a
         className="flex gap-1 my-3 block font-semibold underline"

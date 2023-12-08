@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios';
 import PlaceGallery from '../components/PlaceGallery';
 import BookingDates from '../components/BookingDates';
@@ -24,6 +24,9 @@ export const BookingPage = () => {
 
   return (
     <div className='my-8 pl-32 pr-32 py-16'>
+      <div className="mb-8">
+        <Link to={'/account/bookings'} className="text-sm">&larr; Back to My Bookings</Link>
+      </div>
       <h1 className="text-3xl">{booking.place.title}</h1>
       <a
         className="flex gap-1 my-3 block font-semibold underline"
