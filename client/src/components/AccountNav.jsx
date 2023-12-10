@@ -21,7 +21,7 @@ const AccountNav = () => {
   }
 
   return (
-    <nav className="w-full flex justify-center mt-8 gap-2 mb-8">
+    <nav className="flex-wrap sm:flex-nowrap w-full flex justify-center mt-8 gap-2 mb-8">
       <Link className={linkClasses("profile")} to={"/account"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

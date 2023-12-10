@@ -23,7 +23,7 @@ export const BookingPage = () => {
     }
 
   return (
-    <div className='my-8 pl-32 pr-32 py-16'>
+    <div className='my-8 pl-4 pr-4 py-4 md:pl-16 md:pr-16 md:py-8 lg:pl-32 lg:pr-32 lg:py-16'>
       <div className="mb-8">
         <Link to={'/account/bookings'} className="text-sm">&larr; Back to My Bookings</Link>
       </div>
@@ -54,12 +54,12 @@ export const BookingPage = () => {
         </svg>
         {booking.place.address}
       </a>
-      <div className="bg-gray-200 p-6 my-6 rounded-2xl flex items-center justify-between">
+      <div className="bg-gray-200 p-6 my-6 rounded-2xl flex flex-wrap sm:flex-nowrap items-center justify-between">
         <div>
           <h2 className="text-2xl mb-4">Your Booking Details</h2>
           <BookingDates booking={booking} />
         </div>
-        <div className='bg-primary p-6 text-white rounded-2xl'>
+        <div className='m-auto mt-8 sm:m-0 bg-primary p-6 text-white rounded-2xl'>
           <div>Total Price</div>
           <div className='text-3xl'>£{booking.price}</div>
         </div>

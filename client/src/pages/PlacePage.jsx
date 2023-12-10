@@ -21,7 +21,7 @@ const PlacePage = () => {
   if (!place) return "";
 
   return (
-    <div className="mt-4 bg-gray-100 -mx-8 pl-32 pr-32 py-16">
+    <div className="mt-4 bg-gray-100 -mx-8 pl-4 pr-4 py-4 md:pl-16 md:pr-16 md:py-8 lg:pl-32 lg:pr-32 lg:py-16">
       <div className="mb-8">
         <Link to={'/'} className="text-sm">&larr; Back to Places</Link>
       </div>

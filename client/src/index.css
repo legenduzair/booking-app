@@ -18,3 +18,28 @@ button.primary {
     background-color: #F5385D;
     @apply bg-primary p-2 w-full text-white rounded-2xl;
 }
+
+@media (max-width:400px) {
+    #logo {
+        display: none;
+    }
+    #morePhotosBtn {
+
+    }
+    #morePhotosBtn svg {
+        display: none;
+    }
+    #checkInOut {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #checkInOut div {
+        border-left: none;
+    }
+    #closePhotos {
+        display: none;
+    }
+    #photosOf {
+        margin-right: 5rem;
+    }
+}

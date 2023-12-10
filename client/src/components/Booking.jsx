@@ -49,7 +49,7 @@ const Booking = ({place}) => {
         Price: £{place.price} / per night
       </div>
       <div className="border rounded-2xl mt-4">
-        <div className="flex">
+        <div id="checkInOut" className="flex">
           <div className="py-3 px-4">
             <label>Check In:</label>
             <input value={checkIn} 

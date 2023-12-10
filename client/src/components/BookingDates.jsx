@@ -3,7 +3,7 @@ import {differenceInCalendarDays, format} from 'date-fns'
 
 const BookingDates = ({booking}) => {
   return (
-    <div className="flex gap-1 mb-2 mt-4 text-gray-500">
+    <div className="justify-center md:justify-normal flex-wrap md:flex-nowrap flex gap-1 mb-2 mt-4 text-gray-500">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

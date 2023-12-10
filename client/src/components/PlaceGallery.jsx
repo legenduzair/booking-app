@@ -7,9 +7,9 @@ const PlaceGallery = ({place}) => {
   if (showAllPhotos) {
     return (
       <div className="absolute inset-0 bg-black text-white min-h-screen">
-        <div className="bg-black p-32 grid gap-4">
+        <div className="bg-black p-8 md:p-32 grid gap-4">
           <div>
-            <h2 className="text-3xl mr-48">Photos of {place.title}</h2>
+            <h2 id='photosOf' className="text-3xl mr-48">Photos of {place.title}</h2>
             <button
               onClick={() => setShowAllPhotos(false)}
               className="fixed right-12 top-8 flex gap-1 py-2 px-4 rounded-2xl shadow shadow-black bg-white text-black"
@@ -28,7 +28,7 @@ const PlaceGallery = ({place}) => {
                   d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Close Photos
+              <span id='closePhotos'>Close Photos</span>
             </button>
           </div>
           {place?.photos?.length > 0 &&
@@ -82,6 +82,7 @@ const PlaceGallery = ({place}) => {
         {place.photos.length > 3 && (
           <button
             onClick={() => setShowAllPhotos(true)}
+            id="morePhotosBtn"
             className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl shadow shadow-md shadow-gray-500"
           >
             <svg
