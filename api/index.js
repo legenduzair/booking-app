@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     credentials: true,
-    origin: 'https://booking-app-client-phi.vercel.app/'
+    origin: 'http://localhost:5173'
 }));
 
 mongoose.connect(process.env.MONGO_URL);
@@ -195,7 +195,4 @@ app.get('/bookings/:id', async (req, res) => {
     res.json(await Booking.findById(id).populate('place'));
 });
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.listen(4000)
