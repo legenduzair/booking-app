@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleLoginSubmit = async (ev) => {
     ev.preventDefault();
     try {
-      const {data} = await axios.post('/login', {
+      const {data} = await axios.post('https://booking-app-server-pi.vercel.app/login', {
         email,
         password,
       });
