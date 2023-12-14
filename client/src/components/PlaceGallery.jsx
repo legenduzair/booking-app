@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import Image from './Image';
 
 const PlaceGallery = ({place}) => {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
@@ -34,9 +35,9 @@ const PlaceGallery = ({place}) => {
           {place?.photos?.length > 0 &&
             place.photos.map((photo) => (
               <div>
-                <img
+                <Image
                   className="w-full"
-                  src={"http://localhost:4000/uploads/" + photo}
+                  src={photo}
                   alt=""
                 />
               </div>
@@ -52,9 +53,9 @@ const PlaceGallery = ({place}) => {
           <div>
             {place.photos?.[0] && (
               <div>
-                <img onClick={() => setShowAllPhotos(true)}
+                <Image onClick={() => setShowAllPhotos(true)}
                   className="cursor-pointer w-full aspect-square object-cover"
-                  src={"http://localhost:4000/uploads/" + place.photos[0]}
+                  src={place.photos[0]}
                   alt=""
                 />
               </div>
@@ -62,17 +63,17 @@ const PlaceGallery = ({place}) => {
           </div>
           <div className="grid">
             {place.photos?.[1] && (
-              <img onClick={() => setShowAllPhotos(true)}
+              <Image onClick={() => setShowAllPhotos(true)}
                 className="cursor-pointer aspect-square object-cover"
-                src={"http://localhost:4000/uploads/" + place.photos[1]}
+                src={place.photos[1]}
                 alt=""
               />
             )}
             <div className="overflow-hidden">
               {place.photos?.[2] && (
-                <img onClick={() => setShowAllPhotos(true)}
+                <Image onClick={() => setShowAllPhotos(true)}
                   className="cursor-pointer aspect-square object-cover relative top-2"
-                  src={"http://localhost:4000/uploads/" + place.photos[2]}
+                  src={place.photos[2]}
                   alt=""
                 />
               )}

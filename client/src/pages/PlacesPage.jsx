@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import AccountNav from '../components/AccountNav';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Image from '../components/Image';
 
 const PlacesPage = () => {
 
@@ -29,7 +30,7 @@ const PlacesPage = () => {
             <Link to={'/account/places/' + place._id} key={place} className='flex cursor-pointer gap-4 bg-gray-200 p-4 mb-4 sm:m-4 rounded-2xl'>
               <div className='hidden sm:flex w-32 h-32 bg-gray-300 shrink-0'>
                 {place.photos.length > 0 && (
-                  <img className='object-cover' src={'http://localhost:4000/uploads/' + place.photos[0]} alt="" />
+                  <Image className='object-cover' src={place.photos[0]} alt="" />
                 )}
               </div>
               <div className='grow-0 shrink'>
