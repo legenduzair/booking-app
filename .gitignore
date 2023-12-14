@@ -17,6 +17,7 @@ dist-ssr
 api/node_modules
 api/.env
 api/uploads/*
+client/.env
 
 # Editor directories and files
 .vscode/*
